@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/receipt_generator/application"
+
+if ARGV.empty? && $stdin.tty?
+  warn "Usage: bin/receipt-generator <input-file>"
+  exit 1
+end
+
+if !ARGV.empty? && !File.exist?(ARGV.first)
+  warn "Input file not found: #{ARGV.first}"
+  exit 1
+end
+
+input = ARGF.read
+if input.nil? || input.strip.empty?
+  warn "Input is empty. Provide a non-empty receipt input file or piped input."
+  exit 1
+end
+
+receipt_generator = ReceiptGenerator::Application.new
+receipt = receipt_generator.generate(input)
+puts receipt_generator.print(receipt)
