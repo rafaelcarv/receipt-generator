@@ -58,19 +58,19 @@ input.txt
 Run the application:
 
 ```bash
-bin/receipt-generator input.txt
+bin/receipt_generator input.txt
 ```
 
 or 
 
 ```bash
-ruby bin/receipt-generator input.txt
+ruby bin/receipt_generator input.txt
 ```
 
 You can also pipe input into the application:
 
 ```bash
-cat input.txt | ruby bin/receipt-generator
+cat input.txt | ruby bin/receipt_generator
 ```
 
 The application will output to stdout.
